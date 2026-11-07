@@ -1,0 +1,7 @@
+langchain==1.0.5
+langchain-google-genai
+langgraph==1.0.3
+streamlit==1.50.0
+langsmith==0.4.37
+pydantic==2.12.3
+python-dotenv==1.1.1
