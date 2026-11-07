@@ -1,73 +1,89 @@
-## AI Placement Feedback Assistant
+# AI Placement Feedback Assistant
 
-An AI-powered interview preparation application built using **Python, Streamlit, LangChain, LangGraph, and Google Gemini**.
+An AI-powered platform designed to help students prepare for technical placement interviews through simulated interview questions, automated answer evaluation, performance scoring, and personalised improvement suggestions.
 
-The application helps students prepare for technical interviews by generating role-specific questions, analysing submitted answers, evaluating performance, and providing personalised improvement feedback.
+Built using **Streamlit, LangChain, LangGraph, and Google Gemini**, this project demonstrates how Large Language Models (LLMs) can be integrated into a structured AI workflow to support interview preparation.
 
-## Features
+## Project Overview
 
-- **AI Interview Question Generation:** Generates technical interview questions based on the selected job role.
-- **Custom Questions:** Allows users to enter their own interview questions.
-- **Answer Analysis:** Analyses answers based on technical correctness, relevance, clarity, and completeness.
-- **Performance Evaluation:** Assigns a score out of 10 using a defined evaluation rubric.
-- **Personalised Feedback:** Provides suggestions for improving answers.
-- **Sample Improved Answers:** Generates example answers to help students understand how to improve.
-- **Evaluation Dashboard:** Displays the latest evaluation results.
-- **Downloadable Reports:** Allows users to download their interview evaluation reports.
-- **Conditional Workflow:** Uses LangGraph to determine whether additional feedback is required based on the evaluation score.
+Preparing for technical interviews requires more than just knowing the subject. Candidates also need to communicate their knowledge clearly, provide relevant answers, and identify areas where they need improvement.
+
+The AI Placement Feedback Assistant addresses this by allowing users to practise interview questions and receive AI-generated evaluations of their responses.
+
+The application analyses each answer, assigns a score out of 10, and provides additional feedback when the performance score is below the defined threshold.
+
+## Key Features
+
+- **Role-Based Interview Questions:** Generate interview questions based on the selected job role.
+- **Custom Questions:** Practise using questions entered by the user.
+- **AI-Based Answer Analysis:** Evaluate responses based on technical correctness, relevance, clarity, and completeness.
+- **Performance Scoring:** Receive a score out of 10 using a predefined evaluation rubric.
+- **Personalised Feedback:** Get suggestions and sample improved answers for responses scoring below 7.
+- **Evaluation Report:** Generate a final interview assessment report.
+- **Report Download:** Download the generated evaluation report for future reference.
+
+## How It Works
+
+The application follows a multi-step workflow implemented using LangGraph.
+
+1. **Question Selection:** The user selects a job role and generates a question or enters a custom question.
+2. **Answer Submission:** The user provides an answer to the interview question.
+3. **Answer Analysis:** Gemini analyses the response based on predefined evaluation criteria.
+4. **Performance Evaluation:** The system assigns a score between 0 and 10.
+5. **Conditional Feedback:** If the score is below 7, the workflow generates detailed improvement suggestions and a sample answer.
+6. **Final Report:** The system generates a consolidated evaluation report.
 
 ## Technology Stack
 
 | Technology | Purpose |
 |---|---|
 | Python | Core programming language |
-| Streamlit | Interactive web application interface |
-| LangChain | Integration with the language model |
+| Streamlit | Interactive web application |
+| Google Gemini API | LLM-based question generation and evaluation |
+| LangChain | LLM integration and prompt execution |
 | LangGraph | Workflow orchestration and conditional routing |
-| Google Gemini API | AI-powered question generation and answer evaluation |
-| LangSmith | Workflow monitoring and tracing |
-| Pydantic | Data validation and structured data handling |
+| LangSmith | LLM application monitoring |
+| Pydantic | Data validation |
+| Python-dotenv | Environment variable management |
 
-**AI Model:** Google Gemini (configured model: `gemini-3.5-flash`)
+**LLM Model:** Gemini 3.5 Flash
 
-## Application Workflow
+## Project Structure
 
-The application follows a multi-step AI workflow:
+```text
+AI-Placement-Feedback-Assistant/
+│
+├── app.py
+├── graph.py
+├── nodes.py
+├── state.py
+├── requirements.txt
+├── .env
+└── README.md
+```
 
-1. **Generate Interview Question:** Generates a technical interview question based on the selected job role.
-2. **Analyse Answer:** Analyses the student's submitted answer.
-3. **Evaluate Answer:** Assigns a score based on the following rubric:
-   - Technical correctness: 0–4 marks
-   - Relevance: 0–2 marks
-   - Clarity: 0–2 marks
-   - Completeness: 0–2 marks
-4. **Conditional Routing:**
-   - Score below 7: Proceeds to the feedback generation node.
-   - Score 7 or above: Proceeds directly to report generation.
-5. **Generate Final Report:** Creates a report containing the job role, interview question, evaluation score, answer analysis, improvement feedback, and final recommendation.
+| File | Description |
+|---|---|
+| `app.py` | Streamlit user interface |
+| `graph.py` | Defines and compiles the LangGraph workflow |
+| `nodes.py` | Contains LLM-powered question generation, analysis, evaluation, feedback, and reporting functions |
+| `state.py` | Defines the state structure shared across workflow nodes |
+| `requirements.txt` | Lists project dependencies |
+| `.env` | Stores local environment variables |
 
-### File Description
+## Installation and Setup
 
-- `app.py` – Streamlit user interface.
-- `nodes.py` – Gemini integration and AI workflow functions.
-- `graph.py` – LangGraph workflow definition and conditional routing.
-- `state.py` – Defines the interview workflow state.
-- `requirements.txt` – Project dependencies.
-- `.gitignore` – Specifies files excluded from Git tracking.
+### 1. Clone the Repository
 
-## Installation and Execution
+### 2. Create a Virtual Environment
 
-### 1. Clone the repository
+### 3. Install Dependencies
 
-### 2. Create a virtual environment
-
-### 3. Install dependencies
-
-### 4. Configure the Gemini API key
+### 4. Configure Gemini API Key
 
 Create a `.env` file in the project directory:
 
-### 5. Run the application
+### 5. Run the Application
 
 ```bash
 streamlit run app.py
@@ -75,18 +91,15 @@ streamlit run app.py
 
 ## Learning Outcomes
 
-This project provided practical experience in:
+Through this project, I gained practical experience in:
 
-- Working with Large Language Models (LLMs).
-- Integrating Google Gemini using LangChain.
+- Integrating Google Gemini with LangChain.
 - Building multi-step AI workflows using LangGraph.
-- Implementing conditional routing in AI applications.
-- Designing prompt-based answer evaluation systems.
+- Implementing conditional routing based on model-generated evaluation scores.
+- Designing prompts for answer analysis and evaluation.
 - Developing interactive applications using Streamlit.
-- Exploring AI workflow monitoring using LangSmith.
+- Managing LLM application workflows and monitoring.
 
-## Acknowledgements
+## Acknowledgement
 
-I would like to express my sincere gratitude to **Innomatics Research Labs** for providing the training, practical learning opportunities, and guidance that helped me explore Generative AI and develop this project.
-
-Special thanks to the trainers and mentors for introducing us to technologies such as LangChain, LangGraph, and LLM integration, and for encouraging us to apply these concepts through hands-on projects.
+I would like to express my gratitude to **Innomatics Research Labs** for providing the learning opportunity, technical guidance, and practical exposure that helped me explore Generative AI, LangChain, LangGraph, and LLM-powered application development.
